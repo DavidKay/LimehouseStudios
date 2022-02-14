@@ -1,0 +1,28 @@
+﻿@model SummaryViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Users</h1>
+    <table>
+
+        <thead>
+            <tr><td>User</td><td>Username</td><td>Number of posts</td></tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var userSummary in Model.UserPostSummaries)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(userSummary.Name, "Details", "User", new { userId = userSummary.UserId }, null)
+                        </td>
+                        <td>@userSummary.Username</td>
+                        <td>@userSummary.NumberOfPosts</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
